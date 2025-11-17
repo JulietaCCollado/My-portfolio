@@ -1,249 +1,282 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Julieta's Backend Portfolio</title>
-  <style>
-    :root {
-      --rosa-palo: #E8C8D8;
-      --vino-oscuro: #5A2A41;
-      --arena: #F5F1EC;
-      --grafito: #2E2E2E;
-      --blanco: #FFFFFF;
-    }
-    body {
-      margin: 0;
-      font-family: "Inter", sans-serif;
-      background: var(--arena);
-      color: var(--grafito);
-    }
-    header {
-      padding: 4rem 2rem;
-      text-align: center;
-      background: var(--blanco);
-      border-bottom: 4px solid var(--rosa-palo);
-    }
-    header h1 {
-      color: var(--vino-oscuro);
-      font-size: 2.8rem;
-      margin-bottom: 0.5rem;
-      font-weight: 700;
-    }
-    header p {
-      font-size: 1.2rem;
-      opacity: 0.8;
-    }
-    .projects {
-      padding: 3rem 2rem;
-      max-width: 1100px;
-      margin: auto;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 2rem;
-    }
-    .card {
-      background: var(--blanco);
-      padding: 2rem;
-      border-radius: 16px;
-      border: 1px solid var(--rosa-palo);
-      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-      display: flex;
-      flex-direction: column;
-    }
-    .card h3 {
-      margin-top: 0;
-      color: var(--vino-oscuro);
-      font-size: 1.4rem;
-    }
-    .card ul {
-      padding-left: 1rem;
-    }
-    .tags {
-      margin-top: auto;
-    }
-    .tags span, .tags a {
-      display: inline-block;
-      margin: 0.2rem;
-      padding: 0.3rem 0.6rem;
-      background: var(--rosa-palo);
-      color: var(--vino-oscuro);
-      border-radius: 8px;
-      font-size: 0.8rem;
-      text-decoration: none;
-    }
-    .info {
-      max-width: 1100px;
-      margin: auto;
-      padding: 2rem;
-      display: grid;
-      gap: 2rem;
-      grid-template-columns: 1fr;
-    }
-    @media (min-width: 768px) {
-      .info {
-        grid-template-columns: 1fr 1fr;
-      }
-    }
-    footer {
-      text-align: center;
-      padding: 2rem;
-      opacity: 0.7;
-    }
-  </style>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Julieta's Backend Portfolio</title>
+    <style>
+        :root {
+            --rosa-palo: #E8C8D8;
+            --vino-oscuro: #5A2A41;
+            --arena: #F5F1EC;
+            --grafito: #2E2E2E;
+            --blanco: #FFFFFF;
+        }
+
+        body {
+            margin: 0;
+            font-family: "Inter", sans-serif;
+            background: var(--arena);
+            color: var(--grafito);
+        }
+
+        header {
+            padding: 4rem 2rem;
+            text-align: center;
+            background: var(--blanco);
+            border-bottom: 4px solid var(--rosa-palo);
+        }
+
+        header h1 {
+            color: var(--vino-oscuro);
+            font-size: 2.8rem;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+
+        header p {
+            font-size: 1.2rem;
+            opacity: 0.8;
+        }
+
+        .projects {
+            padding: 3rem 2rem;
+            max-width: 1100px;
+            margin: auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .card {
+            background: var(--blanco);
+            padding: 2rem;
+            border-radius: 16px;
+            border: 1px solid var(--rosa-palo);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.2s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card h3 {
+            margin-top: 0;
+            color: var(--vino-oscuro);
+            font-size: 1.4rem;
+        }
+
+        .card ul {
+            padding-left: 1rem;
+        }
+
+        .tags {
+            margin-top: auto;
+        }
+
+        .tags span,
+        .tags a {
+            display: inline-block;
+            margin: 0.2rem;
+            padding: 0.3rem 0.6rem;
+            background: var(--rosa-palo);
+            color: var(--vino-oscuro);
+            border-radius: 8px;
+            font-size: 0.8rem;
+            text-decoration: none;
+        }
+
+        .info {
+            max-width: 1100px;
+            margin: auto;
+            padding: 2rem;
+            display: grid;
+            gap: 2rem;
+            grid-template-columns: 1fr;
+        }
+
+        @media (min-width: 768px) {
+            .info {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+            opacity: 0.7;
+        }
+    </style>
 </head>
+
 <body>
+<<<<<<< HEAD
   <header>
     <h1>Hello, I'm Julieta</h1>
     <p>Backend Developer · AI · APIs · Databases | Take a look at my projects in GitHub</p>
   </header>
+=======
+    <header>
+        <h1>Hello, I'm Julieta</h1>
+        <p>Backend Developer · AI · APIs · Databases</p>
+    </header>
+>>>>>>> 1a3cb9c (update portfolio HTML and project cards)
 
-  <section class="projects">
-    <div class="card">
-      <h3>RAG Chatbot with LangChain, IBM Watsonx, and Gradio</h3>
-      <p>A Retrieval-Augmented Generation (RAG) chatbot that allows users to upload a document and ask questions using natural language.</p>
-      <h4>Features</h4>
-      <ul>
-        <li>Upload PDF or .txt documents</li>
-        <li>Ask questions about uploaded files</li>
-        <li>LangChain for chunking and retrieval</li>
-        <li>Embedding powered by IBM Watsonx</li>
-        <li>LLM integration for response generation</li>
-        <li>Gradio frontend for user-friendly interface</li>
-      </ul>
-      <h4>Technologies Used</h4>
-      <div class="tags">
-        <span>Python</span>
-        <span>LangChain</span>
-        <span>IBM Watsonx</span>
-        <span>Gradio</span>
-        <a href="https://github.com/JulietaCCollado/RAG-QABot-" target="_blank">GitHub Repo</a>
-      </div>
-    </div>
+    <section class="projects">
+        <a href="https://github.com/JulietaCCollado/RAG-QABot-" target="_blank" style="text-decoration:none;color:inherit;">
+            <div class="card">
+                <h3>RAG Chatbot with LangChain, IBM Watsonx, and Gradio</h3>
+                <p>A Retrieval-Augmented Generation (RAG) chatbot that allows users to upload a document and ask questions using natural language.</p>
+                <h4>Features</h4>
+                <ul>
+                    <li>Upload PDF or .txt documents</li>
+                    <li>Ask questions about uploaded files</li>
+                    <li>LangChain for chunking and retrieval</li>
+                    <li>Embedding powered by IBM Watsonx</li>
+                    <li>LLM integration for response generation</li>
+                    <li>Gradio frontend for user-friendly interface</li>
+                </ul>
+                <h4>Technologies Used</h4>
+                <div class="tags">
+                    <span>Python</span>
+                    <span>LangChain</span>
+                    <span>IBM Watsonx</span>
+                    <span>Gradio</span>
+                </div>
+            </div>
+        </a>
 
-    <div class="card">
-      <h3>Image Classification with CNN (PyTorch)</h3>
-      <p>Train a Convolutional Neural Network (CNN) using PyTorch to classify images from the CIFAR-10 dataset, with the option to predict custom images.</p>
-      <h4>Project Structure</h4>
-      <ul>
-        <li>Models stored in models/cnn.py</li>
-        <li>train.py: Training script</li>
-        <li>test.py: Model evaluation</li>
-        <li>predict.py: Predict custom images</li>
-        <li>main.py: Runs the full pipeline</li>
-        <li>utils.py: Helper functions</li>
-      </ul>
-      <h4>Technologies Used</h4>
-      <div class="tags">
-        <span>Python</span>
-        <span>PyTorch</span>
-        <span>CNN</span>
-        <a href="https://github.com/JulietaCCollado/Image-Classification-with-CNN-PyTorch-" target="_blank">GitHub Repo</a>
-      </div>
-    </div>
+        <a href="https://github.com/JulietaCCollado/Image-Classification-with-CNN-PyTorch-" target="_blank" style="text-decoration:none;color:inherit;">
+            <div class="card">
+                <h3>Image Classification with CNN (PyTorch)</h3>
+                <p>Train a Convolutional Neural Network (CNN) using PyTorch to classify images from the CIFAR-10 dataset, with the option to predict custom images.</p>
+                <h4>Project Structure</h4>
+                <ul>
+                    <li>Models stored in models/cnn.py</li>
+                    <li>train.py: Training script</li>
+                    <li>test.py: Model evaluation</li>
+                    <li>predict.py: Predict custom images</li>
+                    <li>main.py: Runs the full pipeline</li>
+                    <li>utils.py: Helper functions</li>
+                </ul>
+                <h4>Technologies Used</h4>
+                <div class="tags">
+                    <span>Python</span>
+                    <span>PyTorch</span>
+                    <span>CNN</span>
+                </div>
+            </div>
+        </a>
 
-    <div class="card">
-      <h3>Visual Satellite Mission Control</h3>
-      <p>FastAPI-based backend service to predict and analyze satellite positions, manage satellites, calculate visibility, and optionally serve a static frontend interface.</p>
-      <h4>Features</h4>
-      <ul>
-        <li>Satellite management: create, read, update, delete</li>
-        <li>Orbit prediction over time</li>
-        <li>Visibility calculation from specific locations</li>
-        <li>RESTful modular API endpoints</li>
-        <li>Optional static frontend serving</li>
-      </ul>
-      <h4>Technologies Used</h4>
-      <div class="tags">
-        <span>Python</span>
-        <span>FastAPI</span>
-        <span>REST API</span>
-        <a href="https://github.com/JulietaCCollado/Visual_satellite_mission_control" target="_blank">GitHub Repo</a>
-      </div>
-    </div>
+        <a href="https://github.com/JulietaCCollado/Visual_satellite_mission_control" target="_blank" style="text-decoration:none;color:inherit;">
+            <div class="card">
+                <h3>Visual Satellite Mission Control</h3>
+                <p>FastAPI-based backend service to predict and analyze satellite positions, manage satellites, calculate visibility, and optionally serve a static frontend interface.</p>
+                <h4>Features</h4>
+                <ul>
+                    <li>Satellite management: create, read, update, delete</li>
+                    <li>Orbit prediction over time</li>
+                    <li>Visibility calculation from specific locations</li>
+                    <li>RESTful modular API endpoints</li>
+                    <li>Optional static frontend serving</li>
+                </ul>
+                <h4>Technologies Used</h4>
+                <div class="tags">
+                    <span>Python</span>
+                    <span>FastAPI</span>
+                    <span>REST API</span>
+                </div>
+            </div>
+        </a>
 
-    <div class="card">
-      <h3>XRay Helper – Multi-label Chest X-ray Classification (In Progress)</h3>
-      <p>Educational project using CNNs for multi-label chest X-ray classification with explainable AI (Grad-CAM) to highlight influential regions.</p>
-      <h4>Dataset</h4>
-      <ul>
-        <li>NIH ChestX-ray14 (~112,000 images, 14 labeled pathologies)</li>
-        <li>Public dataset: <a href="https://www.kaggle.com/nih-chest-xrays/data" target="_blank">NIH Chest X-ray Dataset</a></li>
-      </ul>
-      <h4>Technologies Used</h4>
-      <div class="tags">
-        <span>Python</span>
-        <span>PyTorch</span>
-        <span>FastAPI</span>
-        <span>Grad-CAM</span>
-        <span>Explainable AI</span>
-      </div>
-    </div>
-  </section>
+        <div class="card">
+            <h3>XRay Helper – Multi-label Chest X-ray Classification (In Progress)</h3>
+            <p>Educational project using CNNs for multi-label chest X-ray classification with explainable AI (Grad-CAM) to highlight influential regions.</p>
+            <h4>Dataset</h4>
+            <ul>
+                <li>NIH ChestX-ray14 (~112,000 images, 14 labeled pathologies)</li>
+                <li>Public dataset: <a href="https://www.kaggle.com/nih-chest-xrays/data" target="_blank">NIH Chest X-ray Dataset</a></li>
+            </ul>
+            <h4>Technologies Used</h4>
+            <div class="tags">
+                <span>Python</span>
+                <span>PyTorch</span>
+                <span>FastAPI</span>
+                <span>Grad-CAM</span>
+                <span>Explainable AI</span>
+            </div>
+        </div>
 
-  <section class="info">
-    <div>
-      <h2 style="color:var(--vino-oscuro);margin-bottom:0.5rem;">Work Experience</h2>
+    </section>
 
-      <div class="card" style="margin-bottom:1rem;">
-        <h3>Product Manager – Your.Rentals</h3>
-        <p><strong>Internship</strong> • Apr 2024 – Dec 2024 • Malmö, Sweden (On-site)</p>
-        <p>Specializing in project and product management within AI and software development. Active contribution to discovery, refinement, and execution of initiatives to enhance the user journey in the rental platform.</p>
-        <ul>
-          <li>Identifying and designing AI-based solutions</li>
-          <li>End-to-end project management</li>
-          <li>Collaboration with cross-functional teams</li>
-        </ul>
-      </div>
+    <section class="info">
+        <div>
+            <h2 style="color:var(--vino-oscuro);margin-bottom:0.5rem;">Work Experience</h2>
 
-      <div class="card" style="margin-bottom:1rem;">
-        <h3>QA Tester – Santander Tecnología Argentina</h3>
-        <p><strong>Freelance</strong> • Mar 2021 – Nov 2022 • Remote (Buenos Aires)</p>
-        <p>Automated testing, execution, documentation, and bug reporting for web services and front-end using modern technologies.</p>
-        <ul>
-          <li>Automation with Cypress (Node.js) for REST APIs and MQ</li>
-          <li>Automated testing with Selenium + Java • TestNG</li>
-          <li>Test case creation and execution (TestLink)</li>
-          <li>Bug reporting using JIRA</li>
-          <li>Basic CI/CD knowledge</li>
-        </ul>
-      </div>
-    </div>
+            <div class="card" style="margin-bottom:1rem;">
+                <h3>Product Manager – Your.Rentals</h3>
+                <p><strong>Internship</strong> • Apr 2024 – Dec 2024 • Malmö, Sweden (On-site)</p>
+                <p>Specializing in project and product management within AI and software development. Active contribution to discovery, refinement, and execution of initiatives to enhance the user journey in the rental platform.</p>
+                <ul>
+                    <li>Identifying and designing AI-based solutions</li>
+                    <li>End-to-end project management</li>
+                    <li>Collaboration with cross-functional teams</li>
+                </ul>
+            </div>
 
-    <div>
-      <h2 style="color:var(--vino-oscuro);margin-bottom:0.5rem;">Education</h2>
-      <div class="card" style="margin-bottom:1rem;">
-        <h3>Applied Artificial Intelligence – IU Hochschule</h3>
-        <p>In progress</p>
-        <ul>
-          <li>AI fundamentals</li>
-          <li>Machine learning and deep learning</li>
-          <li>Practical AI projects</li>
-        </ul>
-      </div>
+            <div class="card" style="margin-bottom:1rem;">
+                <h3>QA Tester – Santander Tecnología Argentina</h3>
+                <p><strong>Freelance</strong> • Mar 2021 – Nov 2022 • Remote (Buenos Aires)</p>
+                <p>Automated testing, execution, documentation, and bug reporting for web services and front-end using modern technologies.</p>
+                <ul>
+                    <li>Automation with Cypress (Node.js) for REST APIs and MQ</li>
+                    <li>Automated testing with Selenium + Java • TestNG</li>
+                    <li>Test case creation and execution (TestLink)</li>
+                    <li>Bug reporting using JIRA</li>
+                    <li>Basic CI/CD knowledge</li>
+                </ul>
+            </div>
+        </div>
 
-      <div class="card" style="margin-bottom:1rem;">
-        <h3>IBM AI Engineering Specialization</h3>
-        <p>Completed</p>
-        <ul>
-          <li>Machine Learning and Deep Learning</li>
-          <li>Python applied to AI</li>
-          <li>Modeling and evaluation of models</li>
-        </ul>
-      </div>
-    </div>
-  </section>
+        <div>
+            <h2 style="color:var(--vino-oscuro);margin-bottom:0.5rem;">Education</h2>
+            <div class="card" style="margin-bottom:1rem;">
+                <h3>Applied Artificial Intelligence – IU Hochschule</h3>
+                <p>In progress</p>
+                <ul>
+                    <li>AI fundamentals</li>
+                    <li>Machine learning and deep learning</li>
+                    <li>Practical AI projects</li>
+                </ul>
+            </div>
 
-  <section class="contact" style="background:var(--blanco);border-top:4px solid var(--rosa-palo);padding:3rem 2rem;text-align:center;">
-    <h2 style="color:var(--vino-oscuro);font-size:2rem;margin-bottom:1rem;">Contact</h2>
-    <p style="font-size:1.1rem;margin-bottom:1.5rem;">Open to full-time backend development opportunities.</p>
-    <p><strong>Email:</strong> julietacollado98@hotmail.com</p>
-    <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/julieta-marina-collado-7779a11a4/" target="_blank">julieta-marina-collado</a></p>
-    <p><strong>GitHub:</strong> <a href="https://github.com/JulietaCCollado" target="_blank">JulietaCCollado</a></p>
-  </section>
+            <div class="card" style="margin-bottom:1rem;">
+                <h3>IBM AI Engineering Specialization</h3>
+                <p>Completed</p>
+                <ul>
+                    <li>Machine Learning and Deep Learning</li>
+                    <li>Python applied to AI</li>
+                    <li>Modeling and evaluation of models</li>
+                </ul>
+            </div>
+        </div>
+    </section>
 
-  <footer>
-    © 2025 · Julieta's Backend Portfolio
-  </footer>
+    <section class="contact" style="background:var(--blanco);border-top:4px solid var(--rosa-palo);padding:3rem 2rem;text-align:center;">
+        <h2 style="color:var(--vino-oscuro);font-size:2rem;margin-bottom:1rem;">Contact</h2>
+        <p style="font-size:1.1rem;margin-bottom:1.5rem;">Open to full-time backend development opportunities.</p>
+        <p><strong>Email:</strong> julietacollado98@hotmail.com</p>
+        <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/julieta-marina-collado-7779a11a4/" target="_blank">julieta-marina-collado</a></p>
+        <p><strong>GitHub:</strong> <a href="https://github.com/JulietaCCollado" target="_blank">JulietaCCollado</a></p>
+    </section>
+
+    <footer>
+        © 2025 · Julieta's Backend Portfolio
+    </footer>
 </body>
+
 </html>
