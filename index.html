@@ -4,293 +4,754 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Julieta's Backend Portfolio</title>
+    <title>Julieta Collado — Software Engineer & AI Developer</title>
+    <meta name="description" content="Portfolio of Julieta Collado — Software Engineer focused on backend development, APIs and applied AI." />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
             --rosa-palo: #E8C8D8;
+            --rosa-suave: #F4DEE7;
             --vino-oscuro: #5A2A41;
+            --vino-claro: #7A3D58;
             --arena: #F5F1EC;
+            --arena-claro: #FBF8F4;
             --grafito: #2E2E2E;
+            --grafito-suave: #555;
             --blanco: #FFFFFF;
+            --shadow-sm: 0 2px 6px rgba(90, 42, 65, 0.06);
+            --shadow-md: 0 8px 24px rgba(90, 42, 65, 0.10);
+            --shadow-lg: 0 16px 40px rgba(90, 42, 65, 0.14);
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
         }
 
         body {
             margin: 0;
-            font-family: "Inter", sans-serif;
+            font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
             background: var(--arena);
             color: var(--grafito);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
         }
 
+        /* ---------- Navigation ---------- */
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: saturate(180%) blur(12px);
+            -webkit-backdrop-filter: saturate(180%) blur(12px);
+            border-bottom: 1px solid rgba(90, 42, 65, 0.08);
+        }
+
+        .nav-inner {
+            max-width: 1100px;
+            margin: auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .nav-logo {
+            font-weight: 700;
+            color: var(--vino-oscuro);
+            letter-spacing: -0.01em;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .nav-links a {
+            color: var(--grafito-suave);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: var(--vino-oscuro);
+        }
+
+        /* ---------- Hero ---------- */
         header {
-            padding: 4rem 2rem;
+            padding: 6rem 2rem 5rem;
             text-align: center;
+            background: linear-gradient(135deg, var(--blanco) 0%, var(--rosa-suave) 100%);
+            border-bottom: 1px solid var(--rosa-palo);
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: "";
+            position: absolute;
+            top: -100px;
+            right: -100px;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, var(--rosa-palo) 0%, transparent 70%);
+            opacity: 0.4;
+            border-radius: 50%;
+        }
+
+        .hero-content {
+            position: relative;
+            max-width: 800px;
+            margin: auto;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            padding: 0.4rem 1rem;
             background: var(--blanco);
-            border-bottom: 4px solid var(--rosa-palo);
+            border: 1px solid var(--rosa-palo);
+            border-radius: 999px;
+            color: var(--vino-oscuro);
+            font-size: 0.85rem;
+            font-weight: 500;
+            margin-bottom: 1.5rem;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .hero-badge span {
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            background: #4CAF50;
+            border-radius: 50%;
+            margin-right: 0.5rem;
+            vertical-align: middle;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
         }
 
         header h1 {
             color: var(--vino-oscuro);
-            font-size: 2.8rem;
-            margin-bottom: 0.5rem;
-            font-weight: 700;
+            font-size: clamp(2rem, 5vw, 3.2rem);
+            margin: 0 0 0.75rem;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            line-height: 1.15;
         }
 
-        header p {
-            font-size: 1.2rem;
-            opacity: 0.8;
+        header .subtitle {
+            font-size: clamp(1rem, 2vw, 1.2rem);
+            color: var(--grafito-suave);
+            margin: 0 0 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
-        .projects {
-            padding: 3rem 2rem;
+        .hero-cta {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.8rem 1.6rem;
+            border-radius: 999px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            text-decoration: none;
+            transition: all 0.2s;
+            border: 2px solid transparent;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background: var(--vino-oscuro);
+            color: var(--blanco);
+        }
+
+        .btn-primary:hover {
+            background: var(--vino-claro);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .btn-secondary {
+            background: var(--blanco);
+            color: var(--vino-oscuro);
+            border-color: var(--rosa-palo);
+        }
+
+        .btn-secondary:hover {
+            background: var(--rosa-suave);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        /* ---------- Section base ---------- */
+        section {
+            padding: 5rem 2rem;
+        }
+
+        .section-inner {
             max-width: 1100px;
             margin: auto;
+        }
+
+        .section-title {
+            color: var(--vino-oscuro);
+            font-size: 2rem;
+            font-weight: 700;
+            margin: 0 0 0.5rem;
+            letter-spacing: -0.01em;
+        }
+
+        .section-subtitle {
+            color: var(--grafito-suave);
+            margin: 0 0 3rem;
+            font-size: 1rem;
+        }
+
+        /* ---------- Project cards ---------- */
+        .projects-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
         }
 
         .card {
             background: var(--blanco);
-            padding: 2rem;
+            padding: 1.75rem;
             border-radius: 16px;
-            border: 1px solid var(--rosa-palo);
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+            border: 1px solid rgba(232, 200, 216, 0.6);
+            box-shadow: var(--shadow-sm);
             display: flex;
             flex-direction: column;
-            transition: transform 0.2s;
+            transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--vino-oscuro), var(--rosa-palo));
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.3s ease;
         }
 
         .card:hover {
-            transform: translateY(-5px);
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--rosa-palo);
+        }
+
+        .card:hover::before {
+            transform: scaleX(1);
         }
 
         .card h3 {
-            margin-top: 0;
+            margin: 0 0 0.5rem;
             color: var(--vino-oscuro);
-            font-size: 1.4rem;
+            font-size: 1.2rem;
+            font-weight: 700;
+            letter-spacing: -0.01em;
+        }
+
+        .card .description {
+            color: var(--grafito-suave);
+            margin: 0 0 1rem;
+            font-size: 0.95rem;
+        }
+
+        .card h4 {
+            margin: 1rem 0 0.5rem;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--vino-oscuro);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
         }
 
         .card ul {
-            padding-left: 1rem;
+            padding-left: 1.1rem;
+            margin: 0 0 1rem;
+            color: var(--grafito-suave);
+            font-size: 0.9rem;
+        }
+
+        .card ul li {
+            margin-bottom: 0.25rem;
         }
 
         .tags {
             margin-top: auto;
+            padding-top: 1rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.4rem;
         }
 
-        .tags span,
-        .tags a {
+        .tags span {
             display: inline-block;
-            margin: 0.2rem;
-            padding: 0.3rem 0.6rem;
-            background: var(--rosa-palo);
+            padding: 0.3rem 0.7rem;
+            background: var(--rosa-suave);
             color: var(--vino-oscuro);
-            border-radius: 8px;
-            font-size: 0.8rem;
-            text-decoration: none;
+            border-radius: 999px;
+            font-size: 0.75rem;
+            font-weight: 500;
         }
 
-        .info {
-            max-width: 1100px;
-            margin: auto;
-            padding: 2rem;
+        .card-footer {
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(232, 200, 216, 0.5);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+        }
+
+        .repo-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            color: var(--vino-oscuro);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: gap 0.2s;
+        }
+
+        .repo-link:hover {
+            gap: 0.7rem;
+        }
+
+        .repo-link svg {
+            width: 18px;
+            height: 18px;
+        }
+
+        .status-tag {
+            font-size: 0.75rem;
+            font-weight: 500;
+            padding: 0.25rem 0.6rem;
+            border-radius: 999px;
+        }
+
+        .status-progress {
+            background: #FFF4E5;
+            color: #B86E00;
+        }
+
+        .status-live {
+            background: #E8F5E9;
+            color: #2E7D32;
+        }
+
+        /* ---------- Experience & Education ---------- */
+        .info-grid {
             display: grid;
-            gap: 2rem;
+            gap: 2.5rem;
             grid-template-columns: 1fr;
         }
 
         @media (min-width: 768px) {
-            .info {
+            .info-grid {
                 grid-template-columns: 1fr 1fr;
             }
         }
 
+        .timeline-card {
+            background: var(--blanco);
+            padding: 1.75rem;
+            border-radius: 16px;
+            border: 1px solid rgba(232, 200, 216, 0.6);
+            box-shadow: var(--shadow-sm);
+            margin-bottom: 1.25rem;
+            border-left: 4px solid var(--vino-oscuro);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .timeline-card:hover {
+            transform: translateX(4px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .timeline-card.current {
+            border-left-color: #4CAF50;
+            background: linear-gradient(135deg, var(--blanco) 0%, #F1F9F1 100%);
+        }
+
+        .timeline-card h3 {
+            margin: 0 0 0.4rem;
+            color: var(--vino-oscuro);
+            font-size: 1.15rem;
+            font-weight: 700;
+        }
+
+        .timeline-meta {
+            color: var(--grafito-suave);
+            font-size: 0.9rem;
+            margin: 0 0 0.75rem;
+        }
+
+        .timeline-meta strong {
+            color: var(--vino-oscuro);
+        }
+
+        .timeline-card p {
+            color: var(--grafito-suave);
+            margin: 0 0 0.75rem;
+            font-size: 0.95rem;
+        }
+
+        .timeline-card ul {
+            padding-left: 1.1rem;
+            margin: 0;
+            color: var(--grafito-suave);
+            font-size: 0.9rem;
+        }
+
+        /* ---------- Contact ---------- */
+        .contact {
+            background: linear-gradient(135deg, var(--vino-oscuro) 0%, var(--vino-claro) 100%);
+            color: var(--blanco);
+            text-align: center;
+            padding: 5rem 2rem;
+        }
+
+        .contact h2 {
+            color: var(--blanco);
+            font-size: 2rem;
+            margin: 0 0 0.5rem;
+            font-weight: 700;
+        }
+
+        .contact .lead {
+            font-size: 1.1rem;
+            margin: 0 0 2.5rem;
+            opacity: 0.9;
+        }
+
+        .contact-grid {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+            max-width: 700px;
+            margin: auto;
+        }
+
+        .contact-card {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 12px;
+            padding: 1.25rem 1.75rem;
+            color: var(--blanco);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            font-weight: 500;
+            transition: all 0.2s;
+            backdrop-filter: blur(10px);
+        }
+
+        .contact-card:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+            border-color: var(--rosa-palo);
+        }
+
+        .contact-card svg {
+            width: 20px;
+            height: 20px;
+        }
+
+        /* ---------- Footer ---------- */
         footer {
             text-align: center;
             padding: 2rem;
-            opacity: 0.7;
+            background: var(--arena);
+            color: var(--grafito-suave);
+            font-size: 0.9rem;
+            border-top: 1px solid rgba(232, 200, 216, 0.5);
+        }
+
+        /* ---------- Animations ---------- */
+        @media (prefers-reduced-motion: no-preference) {
+            .card, .timeline-card {
+                animation: fadeUp 0.5s ease backwards;
+            }
+            .projects-grid .card:nth-child(1) { animation-delay: 0.05s; }
+            .projects-grid .card:nth-child(2) { animation-delay: 0.1s; }
+            .projects-grid .card:nth-child(3) { animation-delay: 0.15s; }
+            .projects-grid .card:nth-child(4) { animation-delay: 0.2s; }
+            .projects-grid .card:nth-child(5) { animation-delay: 0.25s; }
+        }
+
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
     </style>
 </head>
 
 <body>
-  <header>
-    <h1>Hello, I'm Julieta</h1>
-    <p>Backend Developer · AI · APIs · Databases | Take a look at my projects in GitHub</p>
-  </header>
-
-    <section class="projects">
-        <a href="https://github.com/JulietaCCollado/RAG-QABot-" target="_blank" style="text-decoration:none;color:inherit;">
-            <div class="card">
-                <h3>RAG Chatbot with LangChain, IBM Watsonx, and Gradio</h3>
-                <p>A Retrieval-Augmented Generation (RAG) chatbot that allows users to upload a document and ask questions using natural language.</p>
-                <h4>Features</h4>
-                <ul>
-                    <li>Upload PDF or .txt documents</li>
-                    <li>Ask questions about uploaded files</li>
-                    <li>LangChain for chunking and retrieval</li>
-                    <li>Embedding powered by IBM Watsonx</li>
-                    <li>LLM integration for response generation</li>
-                    <li>Gradio frontend for user-friendly interface</li>
-                </ul>
-                <h4>Technologies Used</h4>
-                <div class="tags">
-                    <span>Python</span>
-                    <span>LangChain</span>
-                    <span>IBM Watsonx</span>
-                    <span>Gradio</span>
-                </div>
-            </div>
-        </a>
-
-        <a href="https://github.com/JulietaCCollado/Image-Classification-with-CNN-PyTorch-" target="_blank" style="text-decoration:none;color:inherit;">
-            <div class="card">
-                <h3>Image Classification with CNN (PyTorch)</h3>
-                <p>Train a Convolutional Neural Network (CNN) using PyTorch to classify images from the CIFAR-10 dataset, with the option to predict custom images.</p>
-                <h4>Project Structure</h4>
-                <ul>
-                    <li>Models stored in models/cnn.py</li>
-                    <li>train.py: Training script</li>
-                    <li>test.py: Model evaluation</li>
-                    <li>predict.py: Predict custom images</li>
-                    <li>main.py: Runs the full pipeline</li>
-                    <li>utils.py: Helper functions</li>
-                </ul>
-                <h4>Technologies Used</h4>
-                <div class="tags">
-                    <span>Python</span>
-                    <span>PyTorch</span>
-                    <span>CNN</span>
-                </div>
-            </div>
-        </a>
-
-        <a href="https://github.com/JulietaCCollado/visual-satellite-mission-control" target="_blank" style="text-decoration:none;color:inherit;">
-            <div class="card">
-                <h3>Visual Satellite Mission Control</h3>
-                <p>FastAPI-based backend service to predict and analyze satellite positions, manage satellites, calculate visibility, and optionally serve a static frontend interface.</p>
-                <h4>Features</h4>
-                <ul>
-                    <li>Satellite management: create, read, update, delete</li>
-                    <li>Orbit prediction over time</li>
-                    <li>Visibility calculation from specific locations</li>
-                    <li>RESTful modular API endpoints</li>
-                    <li>Optional static frontend serving</li>
-                </ul>
-                <h4>Technologies Used</h4>
-                <div class="tags">
-                    <span>Python</span>
-                    <span>FastAPI</span>
-                    <span>REST API</span>
-                </div>
-            </div>
-        </a>
-
-        <a href="https://github.com/JulietaCCollado/Chat-App" target="_blank" style="text-decoration:none;color:inherit;">
-            <div class="card">
-                <h3>Chat App using Ruby on Rails</h3>
-                <p>Real-time chat app built with Ruby on Rails, Hotwire, and Tailwind CSS. Users can join chat rooms, send messages, and interact with multiple users in real time, with all data stored persistently.</p>
-                <h4>Features</h4>
-                <ul>
-                    <li>Real-time messaging</li>
-                    <li>Multiple users per chat room</li>
-                    <li>Persistent message storage</li>
-                    <li>User authentication (log in / sign up) </li>
-                    <li>Join and leave chat rooms</li>
-                </ul>
-                <h4>Technologies Used</h4>
-                <div class="tags">
-                    <span>Ruby on Rails</span>
-                    <span>Hotwire</span>
-                    <span>Tailwind CSS</span>
-                    <span>PostgreSQL</span>
-                </div>
-            </div>
-        </a>
-
-        <div class="card">
-            <h3>XRay Helper – Multi-label Chest X-ray Classification (In Progress)</h3>
-            <p>Educational project using CNNs for multi-label chest X-ray classification with explainable AI (Grad-CAM) to highlight influential regions.</p>
-            <h4>Dataset</h4>
-            <ul>
-                <li>NIH ChestX-ray14 (~112,000 images, 14 labeled pathologies)</li>
-                <li>Public dataset: <a href="https://www.kaggle.com/nih-chest-xrays/data" target="_blank">NIH Chest X-ray Dataset</a></li>
-            </ul>
-            <h4>Technologies Used</h4>
-            <div class="tags">
-                <span>Python</span>
-                <span>PyTorch</span>
-                <span>FastAPI</span>
-                <span>Grad-CAM</span>
-                <span>Explainable AI</span>
+    <nav>
+        <div class="nav-inner">
+            <div class="nav-logo">Julieta Collado</div>
+            <div class="nav-links">
+                <a href="#projects">Projects</a>
+                <a href="#experience">Experience</a>
+                <a href="#education">Education</a>
+                <a href="#contact">Contact</a>
             </div>
         </div>
-        
-    </section>
+    </nav>
 
-    <section class="info">
-        <div>
-            <h2 style="color:var(--vino-oscuro);margin-bottom:0.5rem;">Work Experience</h2>
-
-            <div class="card" style="margin-bottom:1rem;">
-                <h3>Product Manager – Your.Rentals</h3>
-                <p><strong>Internship</strong> • Apr 2024 – Dec 2024 • Malmö, Sweden (On-site)</p>
-                <p>Specializing in project and product management within AI and software development. Active contribution to discovery, refinement, and execution of initiatives to enhance the user journey in the rental platform.</p>
-                <ul>
-                    <li>Identifying and designing AI-based solutions</li>
-                    <li>End-to-end project management</li>
-                    <li>Collaboration with cross-functional teams</li>
-                </ul>
-            </div>
-
-            <div class="card" style="margin-bottom:1rem;">
-                <h3>QA Tester – Santander Tecnología Argentina</h3>
-                <p><strong>Freelance</strong> • Mar 2021 – Nov 2022 • Remote (Buenos Aires)</p>
-                <p>Automated testing, execution, documentation, and bug reporting for web services and front-end using modern technologies.</p>
-                <ul>
-                    <li>Automation with Cypress (Node.js) for REST APIs and MQ</li>
-                    <li>Automated testing with Selenium + Java • TestNG</li>
-                    <li>Test case creation and execution (TestLink)</li>
-                    <li>Bug reporting using JIRA</li>
-                    <li>Basic CI/CD knowledge</li>
-                </ul>
+    <header>
+        <div class="hero-content">
+            <div class="hero-badge"><span></span>Currently interning at Sessio.io · Copenhagen</div>
+            <h1>Hi, I'm Julieta — Software Engineer &amp; AI Developer</h1>
+            <p class="subtitle">Backend development, APIs, databases, and applied AI. I build practical tools that combine clean architecture with real machine-learning workflows.</p>
+            <div class="hero-cta">
+                <a class="btn btn-primary" href="#projects">View Projects</a>
+                <a class="btn btn-secondary" href="https://github.com/JulietaCCollado" target="_blank" rel="noopener">
+                    <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.1.79-.25.79-.55v-2.13c-3.2.7-3.87-1.36-3.87-1.36-.52-1.33-1.27-1.69-1.27-1.69-1.04-.71.08-.7.08-.7 1.15.08 1.76 1.18 1.76 1.18 1.02 1.76 2.69 1.25 3.34.95.1-.74.4-1.25.73-1.54-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.29 1.18-3.1-.12-.29-.51-1.46.11-3.05 0 0 .96-.31 3.16 1.18a10.94 10.94 0 0 1 5.76 0c2.2-1.49 3.16-1.18 3.16-1.18.62 1.59.23 2.76.11 3.05.74.81 1.18 1.84 1.18 3.1 0 4.42-2.7 5.39-5.27 5.68.41.36.78 1.07.78 2.16v3.2c0 .31.21.66.8.55C20.71 21.39 24 17.08 24 12 24 5.65 18.85.5 12 .5z"/></svg>
+                    GitHub
+                </a>
             </div>
         </div>
+    </header>
 
-        <div>
-            <h2 style="color:var(--vino-oscuro);margin-bottom:0.5rem;">Education</h2>
-            <div class="card" style="margin-bottom:1rem;">
-                <h3>Applied Artificial Intelligence – IU Hochschule</h3>
-                <p>In progress</p>
-                <ul>
-                    <li>AI fundamentals</li>
-                    <li>Machine learning and deep learning</li>
-                    <li>Practical AI projects</li>
-                </ul>
-            </div>
+    <section id="projects">
+        <div class="section-inner">
+            <h2 class="section-title">Projects</h2>
+            <p class="section-subtitle">A selection of repositories from my GitHub — backend services, AI applications, and full-stack apps.</p>
 
-            <div class="card" style="margin-bottom:1rem;">
-                <h3>IBM AI Engineering Specialization</h3>
-                <p>Completed</p>
-                <ul>
-                    <li>Machine Learning and Deep Learning</li>
-                    <li>Python applied to AI</li>
-                    <li>Modeling and evaluation of models</li>
-                </ul>
+            <div class="projects-grid">
+                <div class="card">
+                    <h3>RAG Chatbot — LangChain &amp; IBM Watsonx</h3>
+                    <p class="description">A Retrieval-Augmented Generation chatbot that lets users upload a document and ask questions about it in natural language.</p>
+                    <h4>Features</h4>
+                    <ul>
+                        <li>Upload PDF or .txt documents</li>
+                        <li>LangChain for chunking and retrieval</li>
+                        <li>Embeddings powered by IBM Watsonx</li>
+                        <li>LLM integration for response generation</li>
+                        <li>Gradio frontend</li>
+                    </ul>
+                    <div class="tags">
+                        <span>Python</span>
+                        <span>LangChain</span>
+                        <span>IBM Watsonx</span>
+                        <span>Gradio</span>
+                    </div>
+                    <div class="card-footer">
+                        <a class="repo-link" href="https://github.com/JulietaCCollado/RAG-QABot-" target="_blank" rel="noopener">
+                            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.1.79-.25.79-.55v-2.13c-3.2.7-3.87-1.36-3.87-1.36-.52-1.33-1.27-1.69-1.27-1.69-1.04-.71.08-.7.08-.7 1.15.08 1.76 1.18 1.76 1.18 1.02 1.76 2.69 1.25 3.34.95.1-.74.4-1.25.73-1.54-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.29 1.18-3.1-.12-.29-.51-1.46.11-3.05 0 0 .96-.31 3.16 1.18a10.94 10.94 0 0 1 5.76 0c2.2-1.49 3.16-1.18 3.16-1.18.62 1.59.23 2.76.11 3.05.74.81 1.18 1.84 1.18 3.1 0 4.42-2.7 5.39-5.27 5.68.41.36.78 1.07.78 2.16v3.2c0 .31.21.66.8.55C20.71 21.39 24 17.08 24 12 24 5.65 18.85.5 12 .5z"/></svg>
+                            View on GitHub →
+                        </a>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h3>Image Classification with CNN (PyTorch)</h3>
+                    <p class="description">A Convolutional Neural Network trained on CIFAR-10, with a clean modular pipeline and support for predicting custom images.</p>
+                    <h4>Project Structure</h4>
+                    <ul>
+                        <li><code>models/cnn.py</code> — model definition</li>
+                        <li><code>train.py</code> — training script</li>
+                        <li><code>test.py</code> — evaluation</li>
+                        <li><code>predict.py</code> — custom image inference</li>
+                        <li><code>main.py</code> — full pipeline runner</li>
+                    </ul>
+                    <div class="tags">
+                        <span>Python</span>
+                        <span>PyTorch</span>
+                        <span>CNN</span>
+                        <span>CIFAR-10</span>
+                    </div>
+                    <div class="card-footer">
+                        <a class="repo-link" href="https://github.com/JulietaCCollado/Image-Classification-with-CNN-PyTorch-" target="_blank" rel="noopener">
+                            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.1.79-.25.79-.55v-2.13c-3.2.7-3.87-1.36-3.87-1.36-.52-1.33-1.27-1.69-1.27-1.69-1.04-.71.08-.7.08-.7 1.15.08 1.76 1.18 1.76 1.18 1.02 1.76 2.69 1.25 3.34.95.1-.74.4-1.25.73-1.54-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.29 1.18-3.1-.12-.29-.51-1.46.11-3.05 0 0 .96-.31 3.16 1.18a10.94 10.94 0 0 1 5.76 0c2.2-1.49 3.16-1.18 3.16-1.18.62 1.59.23 2.76.11 3.05.74.81 1.18 1.84 1.18 3.1 0 4.42-2.7 5.39-5.27 5.68.41.36.78 1.07.78 2.16v3.2c0 .31.21.66.8.55C20.71 21.39 24 17.08 24 12 24 5.65 18.85.5 12 .5z"/></svg>
+                            View on GitHub →
+                        </a>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h3>Visual Satellite Mission Control</h3>
+                    <p class="description">FastAPI backend service to predict and analyze satellite positions, manage satellites, and calculate visibility windows from a given location.</p>
+                    <h4>Features</h4>
+                    <ul>
+                        <li>Full satellite CRUD management</li>
+                        <li>Orbit prediction over time</li>
+                        <li>Visibility calculation from coordinates</li>
+                        <li>Modular RESTful endpoints</li>
+                        <li>Optional static frontend</li>
+                    </ul>
+                    <div class="tags">
+                        <span>Python</span>
+                        <span>FastAPI</span>
+                        <span>REST API</span>
+                    </div>
+                    <div class="card-footer">
+                        <a class="repo-link" href="https://github.com/JulietaCCollado/visual-satellite-mission-control" target="_blank" rel="noopener">
+                            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.1.79-.25.79-.55v-2.13c-3.2.7-3.87-1.36-3.87-1.36-.52-1.33-1.27-1.69-1.27-1.69-1.04-.71.08-.7.08-.7 1.15.08 1.76 1.18 1.76 1.18 1.02 1.76 2.69 1.25 3.34.95.1-.74.4-1.25.73-1.54-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.29 1.18-3.1-.12-.29-.51-1.46.11-3.05 0 0 .96-.31 3.16 1.18a10.94 10.94 0 0 1 5.76 0c2.2-1.49 3.16-1.18 3.16-1.18.62 1.59.23 2.76.11 3.05.74.81 1.18 1.84 1.18 3.1 0 4.42-2.7 5.39-5.27 5.68.41.36.78 1.07.78 2.16v3.2c0 .31.21.66.8.55C20.71 21.39 24 17.08 24 12 24 5.65 18.85.5 12 .5z"/></svg>
+                            View on GitHub →
+                        </a>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h3>Real-time Chat App — Ruby on Rails</h3>
+                    <p class="description">Real-time chat application built with Rails, Hotwire, and Tailwind CSS. Users can join rooms, send messages, and interact in real time with persistent storage.</p>
+                    <h4>Features</h4>
+                    <ul>
+                        <li>Real-time messaging with Hotwire</li>
+                        <li>Multi-user chat rooms</li>
+                        <li>Persistent message storage</li>
+                        <li>User authentication (sign up / log in)</li>
+                        <li>Join and leave rooms dynamically</li>
+                    </ul>
+                    <div class="tags">
+                        <span>Ruby on Rails</span>
+                        <span>Hotwire</span>
+                        <span>Tailwind CSS</span>
+                        <span>PostgreSQL</span>
+                    </div>
+                    <div class="card-footer">
+                        <a class="repo-link" href="https://github.com/JulietaCCollado/Chat-App" target="_blank" rel="noopener">
+                            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.1.79-.25.79-.55v-2.13c-3.2.7-3.87-1.36-3.87-1.36-.52-1.33-1.27-1.69-1.27-1.69-1.04-.71.08-.7.08-.7 1.15.08 1.76 1.18 1.76 1.18 1.02 1.76 2.69 1.25 3.34.95.1-.74.4-1.25.73-1.54-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.29 1.18-3.1-.12-.29-.51-1.46.11-3.05 0 0 .96-.31 3.16 1.18a10.94 10.94 0 0 1 5.76 0c2.2-1.49 3.16-1.18 3.16-1.18.62 1.59.23 2.76.11 3.05.74.81 1.18 1.84 1.18 3.1 0 4.42-2.7 5.39-5.27 5.68.41.36.78 1.07.78 2.16v3.2c0 .31.21.66.8.55C20.71 21.39 24 17.08 24 12 24 5.65 18.85.5 12 .5z"/></svg>
+                            View on GitHub →
+                        </a>
+                    </div>
+                </div>
+
             </div>
         </div>
     </section>
 
-    <section class="contact" style="background:var(--blanco);border-top:4px solid var(--rosa-palo);padding:3rem 2rem;text-align:center;">
-        <h2 style="color:var(--vino-oscuro);font-size:2rem;margin-bottom:1rem;">Contact</h2>
-        <p style="font-size:1.1rem;margin-bottom:1.5rem;">Open to full-time backend development opportunities.</p>
-        <p><strong>Email:</strong> julietacollado98@hotmail.com</p>
-        <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/julieta-marina-collado-7779a11a4/" target="_blank">julieta-marina-collado</a></p>
-        <p><strong>GitHub:</strong> <a href="https://github.com/JulietaCCollado" target="_blank">JulietaCCollado</a></p>
+    <section id="experience" style="background: var(--arena-claro);">
+        <div class="section-inner">
+            <div class="info-grid">
+                <div>
+                    <h2 class="section-title">Work Experience</h2>
+                    <p class="section-subtitle">Where I've worked and what I've built.</p>
+
+                    <div class="timeline-card current">
+                        <h3>Developer Intern — Sessio</h3>
+                        <p class="timeline-meta"><strong>Internship</strong> · Apr 2026 – Present · Copenhagen, Denmark (On-site)</p>
+                        <p>Contributing to the end-to-end development of a startup platform designed to connect musicians, producers, and record labels. Working closely with the founding team to turn product requirements into scalable technical solutions ahead of launch.</p>
+                        <ul>
+                            <li>Building and refining application features in a fast-paced startup environment</li>
+                            <li>Translating UI/UX designs into responsive, user-focused interfaces</li>
+                            <li>Supporting the overall product architecture with a focus on performance and usability</li>
+                            <li>Driving the transition from no-code solutions to fully coded systems with custom APIs</li>
+                            <li>Rapid prototyping and iteration on product features alongside the founding team</li>
+                        </ul>
+                    </div>
+
+                    <div class="timeline-card">
+                        <h3>Product Manager — Your.Rentals</h3>
+                        <p class="timeline-meta"><strong>Internship</strong> · Apr 2024 – Dec 2024 · Malmö, Sweden (On-site)</p>
+                        <p>Project and product management within AI and software development. Active contribution to discovery, refinement, and execution of initiatives that enhanced the user journey of the rental platform.</p>
+                        <ul>
+                            <li>Identifying and designing AI-based solutions</li>
+                            <li>End-to-end project management</li>
+                            <li>Collaboration with cross-functional teams</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div id="education">
+                    <h2 class="section-title">Education</h2>
+                    <p class="section-subtitle">Continuous learning across AI and engineering.</p>
+
+                    <div class="timeline-card">
+                        <h3>B.Sc. Applied Artificial Intelligence — IU Hochschule</h3>
+                        <p class="timeline-meta"><strong>In progress</strong></p>
+                        <ul>
+                            <li>AI fundamentals</li>
+                            <li>Machine learning &amp; deep learning</li>
+                            <li>Practical AI projects</li>
+                        </ul>
+                    </div>
+
+                    <div class="timeline-card">
+                        <h3>IBM AI Engineering Specialization</h3>
+                        <p class="timeline-meta"><strong>Completed</strong></p>
+                        <ul>
+                            <li>Machine Learning &amp; Deep Learning</li>
+                            <li>Python applied to AI</li>
+                            <li>Modeling and evaluation of models</li>
+                        </ul>
+                    </div>
+
+                    <div class="timeline-card">
+                        <h3>Neural Networks and Deep Learning — DeepLearning.AI</h3>
+                        <p class="timeline-meta"><strong>In progress</strong> · Coursera (Andrew Ng)</p>
+                        <ul>
+                            <li>Foundations of neural networks</li>
+                            <li>Forward and backpropagation from scratch</li>
+                            <li>Deep neural network architectures</li>
+                            <li>Vectorized implementations in Python &amp; NumPy</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact">
+        <h2>Let's get in touch</h2>
+        <p class="lead">Open to software engineering and AI roles — happy to chat.</p>
+        <div class="contact-grid">
+            <a class="contact-card" href="mailto:julietacollado98@hotmail.com">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                Email
+            </a>
+            <a class="contact-card" href="https://www.linkedin.com/in/julieta-marina-collado-7779a11a4/" target="_blank" rel="noopener">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.13 1.45-2.13 2.94v5.67H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.59 0 4.26 2.36 4.26 5.43v6.31zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.55V9h3.57v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0z"/></svg>
+                LinkedIn
+            </a>
+            <a class="contact-card" href="https://github.com/JulietaCCollado" target="_blank" rel="noopener">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.1.79-.25.79-.55v-2.13c-3.2.7-3.87-1.36-3.87-1.36-.52-1.33-1.27-1.69-1.27-1.69-1.04-.71.08-.7.08-.7 1.15.08 1.76 1.18 1.76 1.18 1.02 1.76 2.69 1.25 3.34.95.1-.74.4-1.25.73-1.54-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.29 1.18-3.1-.12-.29-.51-1.46.11-3.05 0 0 .96-.31 3.16 1.18a10.94 10.94 0 0 1 5.76 0c2.2-1.49 3.16-1.18 3.16-1.18.62 1.59.23 2.76.11 3.05.74.81 1.18 1.84 1.18 3.1 0 4.42-2.7 5.39-5.27 5.68.41.36.78 1.07.78 2.16v3.2c0 .31.21.66.8.55C20.71 21.39 24 17.08 24 12 24 5.65 18.85.5 12 .5z"/></svg>
+                GitHub
+            </a>
+        </div>
     </section>
 
     <footer>
-        © 2025 · Julieta's Backend Portfolio
+        © 2026 · Julieta Collado · Built with care in Copenhagen
     </footer>
 </body>
 
